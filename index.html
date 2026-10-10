@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TRUCCO HACKER 1: Titolo camuffato per la cronologia di Jamf -->
     <title>Google Classroom - Corso di Matematica Prima B</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background-color: #ffffff; color: #3c4043; text-align: center; padding: 0; margin: 0; overflow-x: hidden; }
@@ -12,17 +13,21 @@
         .assignment h3 { margin: 0 0 5px 0; color: #137333; }
         .secret-signature { font-size: 0.75rem; color: #dadce0; text-align: right; margin-top: 50px; }
         
-        #game-hub { display: none; background-color: #121212; color: #ffffff; position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow-y: auto; z-index: 9999; padding: 20px; box-sizing: border-box; }
+        /* SHIELD DELLO HUB DI GIOCO NASCOSTO */
+        #game-hub { display: none; background-color: #121212; color: #ffffff; position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow-y: auto; z-index: 9999; padding: 20px; box-sizing: border-box; text-align: center; }
         .game-container { max-width: 950px; margin: 0 auto; text-align: center; }
         .btn-panic { background-color: #d93025; float: right; padding: 10px 20px; color: white; border-radius: 4px; border: none; cursor: pointer; font-weight: bold; }
         .card { background-color: #171717; border: 2px solid #262626; border-radius: 12px; padding: 25px; margin-bottom: 25px; text-align: left; }
-        .game-frame { width: 100%; height: 550px; border: 2px solid #137333; border-radius: 8px; background-color: #000; margin-top: 15px; }
         
+        /* TABS INTERFACE */
         .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
         .tab-btn { background-color: #222; border: 1px solid #444; color: white; padding: 10px 20px; cursor: pointer; font-weight: bold; border-radius: 4px; }
         .tab-btn.active { background-color: #137333; border-color: #1a9443; }
         .game-section { display: none; }
         .game-section.active { display: block; }
+        
+        .game-frame { width: 100%; height: 500px; border: 2px solid #137333; border-radius: 8px; background-color: #000; margin-top: 15px; }
+        #gdCanvas { background-color: #1a1a2e; border: 4px solid #137333; border-radius: 8px; display: block; margin: 20px auto 0 auto; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -37,10 +42,6 @@
                 <h3>Dispensa: Introduzione alle Frazioni Proprie ed Improprie</h3>
                 <p style="margin: 0; font-size: 0.9rem; color: #5f6368;">Caricato ieri (Scadenza: Prossimo lunedì)</p>
             </div>
-            <div class="assignment">
-                <h3>Eserciziario: Espressioni aritmetiche con parentesi quadre</h3>
-                <p style="margin: 0; font-size: 0.9rem; color: #5f6368;">Caricato il 5 Ottobre</p>
-            </div>
             <div class="secret-signature">Google Classroom v4.2.1 — Node Status: MS-01</div>
         </div>
     </div>
@@ -52,67 +53,110 @@
             <h1 style="color: #137333; margin: 0 0 20px 0;">Piattaforma Esercitazioni Multimediali</h1>
             
             <div class="tabs">
-                <button id="btn-mc" class="tab-btn active" onclick="switchTab('mc-section')">Minecraft (Eaglercraft)</button>
-                <button id="btn-gd" class="tab-btn" onclick="switchTab('gd-section')">Geometry Dash (Proxy Link)</button>
+                <button id="btn-gd" class="tab-btn active" onclick="switchTab('gd-section')">Geometry Dash</button>
+                <button id="btn-pacman" class="tab-btn" onclick="switchTab('pacman-section')">Google Pac-Man</button>
+                <button id="btn-snake" class="tab-btn" onclick="switchTab('snake-section')">Google Snake</button>
             </div>
 
-            <!-- SCHEDA 1: MINECRAFT EAGLERCRAFT -->
-            <div id="mc-section" class="game-section active">
+            <!-- SCHEDA 1: GEOMETRY DASH LOCALE -->
+            <div id="gd-section" class="game-section active">
                 <div class="card">
-                    <h2 style="color: #4285f4; margin-top:0;">⛏️ Modulo A: Simulazione Sandbox 3D</h2>
-                    <p style="color: #aaa; margin: 0;">Caricamento dal porto web crittografato. Attendi qualche istante...</p>
+                    <h2 style="color: #137333; margin-top:0;">📐 Modulo A: Test Spaziale Ritminco</h2>
+                    <canvas id="gdCanvas" width="800" height="350"></canvas>
+                    <p style="color: #888; text-align: center; margin-top: 10px;"><strong>Comandi:</strong> Barra Spaziatrice o Clic del mouse per saltare.</p>
+                </div>
+            </div>
+
+            <!-- SCHEDA 2: GOOGLE PAC-MAN EMBEDDED -->
+            <div id="pacman-section" class="game-section">
+                <div class="card">
+                    <h2 style="color: #4285f4; margin-top:0;">🕹️ Modulo B: Google Doodle Pac-Man</h2>
+                    <p style="color: #aaa; margin: 0;">Esecuzione tramite sorgente Google Doodle aperta [doodlecricket.github.io/google-doodle-games.html]. Usa le frecce direzionali della tastiera.</p>
+                    <iframe class="game-frame" src="https://google.com"></iframe>
+                </div>
+            </div>
+
+            <!-- SCHEDA 3: GOOGLE SNAKE EMBEDDED -->
+            <div id="snake-section" class="game-section">
+                <div class="card">
+                    <h2 style="color: #ea4335; margin-top:0;">🐍 Modulo C: Gioco del Serpente Classico</h2>
+                    <p style="color: #aaa; margin: 0;">Usa le frecce sulla tastiera per mangiare le mele ed evitare le pareti.</p>
                     <iframe class="game-frame" src="https://github.io"></iframe>
                 </div>
             </div>
 
-            <!-- SCHEDA 2: GEOMETRY DASH ALTERNATIVO -->
-            <div id="gd-section" class="game-section">
-                <div class="card">
-                    <h2 style="color: #137333; margin-top:0;">📐 Modulo B: Test Spaziale Ritminco</h2>
-                    <p style="color: #aaa; margin: 0;">Versione sbloccata online di Geometry Dash ospitata su pagine secondarie:</p>
-                    <iframe class="game-frame" src="https://github.io"></iframe>
-                </div>
-            </div>
         </div>
     </div>
 
 <script>
     const secretCode = "gioco";
     let inputBuffer = "";
+    let gameInterval;
+    let gameRunning = false;
 
     function switchTab(sectionId) {
         document.querySelectorAll('.game-section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         document.getElementById(sectionId).classList.add('active');
         
-        if(sectionId === 'mc-section') document.getElementById('btn-mc').classList.add('active');
-        if(sectionId === 'gd-section') document.getElementById('btn-gd').classList.add('active');
+        if(sectionId === 'gd-section') { document.getElementById('btn-gd').classList.add('active'); if(gameRunning) startGD(); }
+        if(sectionId === 'pacman-section') { document.getElementById('btn-pacman').classList.add('active'); clearInterval(gameInterval); }
+        if(sectionId === 'snake-section') { document.getElementById('btn-snake').classList.add('active'); clearInterval(gameInterval); }
     }
 
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' || event.key === 'Esc') { 
-            lockHub(); 
-            return; 
-        }
+    // --- ENGINE GEOMETRY DASH INTERNO ---
+    const canvas = document.getElementById("gdCanvas");
+    const ctx = canvas.getContext("2d");
+    let cube = { x: 120, y: 260, size: 30, vy: 0, gravity: 1.2, jumpForce: -15, isGrounded: true, angle: 0 };
+    let obstacles = [];
+    let score = 0;
+    let gameSpeed = 6;
+
+    function updateGD() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#137333"; ctx.fillRect(0, 290, canvas.width, 60);
+        cube.vy += cube.gravity; cube.y += cube.vy;
+        if (cube.y >= 260) { cube.y = 260; cube.vy = 0; cube.isGrounded = true; cube.angle = Math.round(cube.angle / 90) * 90; } else { cube.angle += 5; }
+        ctx.save(); ctx.translate(cube.x + cube.size/2, cube.y + cube.size/2); ctx.rotate((cube.angle * Math.PI) / 180);
+        ctx.fillStyle = "#00ffff"; ctx.fillRect(-cube.size/2, -cube.size/2, cube.size, cube.size); ctx.restore();
         
+        if (Math.random() < 0.02 && (obstacles.length === 0 || obstacles[obstacles.length - 1].x < 500)) obstacles.push({ x: 850, y: 260, width: 30, height: 30 });
+        for (let i = obstacles.length - 1; i >= 0; i--) {
+            obstacles[i].x -= gameSpeed;
+            ctx.fillStyle = "#ff0055"; ctx.beginPath(); ctx.moveTo(obstacles[i].x, obstacles[i].y + 30); ctx.lineTo(obstacles[i].x + 15, obstacles[i].y); ctx.lineTo(obstacles[i].x + 30, obstacles[i].y + 30); ctx.closePath(); ctx.fill();
+            if (cube.x < obstacles[i].x + 30 && cube.x + 30 > obstacles[i].x && cube.y < obstacles[i].y + 30 && cube.y + 30 > obstacles[i].y) { obstacles = []; score = 0; gameSpeed = 6; }
+            if (obstacles[i] && obstacles[i].x < -50) { obstacles.splice(i, 1); score++; if (score % 5 === 0) gameSpeed += 1; }
+        }
+        ctx.fillStyle = "#fff"; ctx.font = "bold 18px Arial"; ctx.fillText("Punti: " + score, 20, 35);
+    }
+
+    function startGD() { clearInterval(gameInterval); gameInterval = setInterval(updateGD, 1000/60); }
+
+    window.addEventListener("keydown", function(e) { 
+        if (e.code === "Space" && document.getElementById('gd-section').classList.contains('active')) { 
+            e.preventDefault(); 
+            if (cube.isGrounded) { cube.vy = -15; cube.isGrounded = false; } 
+        } 
+    });
+    canvas.addEventListener("mousedown", () => { if (cube.isGrounded) { cube.vy = -15; cube.isGrounded = false; } });
+
+    // SBLOCCO E PANIC BUTTON
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' || event.key === 'Esc') { lockHub(); return; }
         inputBuffer += event.key.toLowerCase();
-        if (inputBuffer.length > secretCode.length) {
-            inputBuffer = inputBuffer.substring(inputBuffer.length - secretCode.length);
-        }
-        if (inputBuffer === secretCode) { 
-            unlockHub(); 
-            inputBuffer = ""; 
-        }
+        if (inputBuffer.length > secretCode.length) inputBuffer = inputBuffer.substring(inputBuffer.length - secretCode.length);
+        if (inputBuffer === secretCode) { unlockHub(); inputBuffer = ""; }
     });
 
     function unlockHub() {
         document.getElementById('game-hub').style.display = 'block';
+        if (!gameRunning) { startGD(); gameRunning = true; }
     }
 
     function lockHub() {
         document.getElementById('game-hub').style.display = 'none';
-        inputBuffer = "";
-    }
+        clearInterval(gameInterval); gameRunning = false; obstacles = []; score = 0; inputBuffer = "";
+    } 
 </script>
 </body>
 </html>
